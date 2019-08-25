@@ -1,8 +1,12 @@
 package com.example.celebrityapp.model;
 
 import android.content.ContentValues;
+import android.database.Cursor;
+import android.util.Log;
 
 public class Celebrity {
+
+    public static final String TAG = "Celebrity.class";
 
     private long id;
     private String firstName;
@@ -79,6 +83,10 @@ public class Celebrity {
 
         return c;
     }
+//
+//    public static Celebrity fromCursor(Cursor c) {
+//
+//    }
 
     @Override
     public String toString() {

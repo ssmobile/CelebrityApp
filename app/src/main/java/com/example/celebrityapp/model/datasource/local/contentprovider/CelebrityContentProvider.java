@@ -38,13 +38,13 @@ public class CelebrityContentProvider extends ContentProvider {
             case CELEBRITY:
                 Log.d(TAG, "query: CELEBRITY");
                 returnCursor = sqLiteDatabase.query(
-                        CELEB_TABLE_NAME,
-                        projection,
-                        selection,
-                        selectionArgs,
-                        null,
-                        null,
-                        sortby);
+                        CELEB_TABLE_NAME,               //Table queried
+                        projection,                     //Columns to return
+                        selection,                      //Selection clause
+                        selectionArgs,                  //Selection arguments
+                        null,                   //group by
+                        null,                    //having
+                        sortby);                        //sort order
                 break;
             case CELEBRITY_ID:
                 Log.d(TAG, "query: CELEBRITY_ID");

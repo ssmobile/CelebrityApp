@@ -1,21 +1,16 @@
 package com.example.celebrityapp;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 
-import com.example.celebrityapp.model.Celebrity;
-import com.example.celebrityapp.model.Film;
-import com.example.celebrityapp.model.datasource.local.contentprovider.CelebrityContentProvider;
-import com.example.celebrityapp.model.datasource.local.contentprovider.CelebrityProviderContract;
+import com.example.celebrityapp.ui.celebrity.CelebrityFragment;
+import com.example.celebrityapp.ui.main.MainFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -28,17 +23,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.Menu;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private NavigationView navigationView;
     private Toolbar toolbar;
     private FloatingActionButton fab;
+    private DrawerLayout drawer;
     public static final String TAG = "TAG_MainActivity";
 
     @Override
@@ -47,73 +38,86 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bindViews();
         configureViews();
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new MainFragment()).commit();
+        }
+
+        navigationView.setCheckedItem(R.id.nav_main);
     }
 
     @Override
     public boolean onSupportNavigateUp() {
+        Log.d(TAG, "onSupportNavigateUp: ");
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
 
     private void bindViews() {
-        fab = findViewById(R.id.fab);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.nav_view);
+        fab = findViewById(R.id.fab);
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
-                .build();
+//        mAppBarConfiguration = new AppBarConfiguration.Builder(
+//                R.id.nav_all, R.id.nav_industries,
+//                R.id.nav_favs, R.id.nav_filio)
+//                .setDrawerLayout(drawer)
+//                .build();
     }
 
     private void configureViews() {
         setSupportActionBar(toolbar);
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-        fab.setOnClickListener(new View.OnClickListener() {
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+//        NavigationUI.setupWithNavController(navigationView, navController);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Log.d(TAG, "onNavigationItemSelected: ");
 
-                Celebrity celebrity = new Celebrity("John", "Cena", "6.1",
-                        "Wrestler", "01/01/1970", true);
-                ContentValues contentValues = celebrity.getContentValues();
+                switch (menuItem.getItemId()) {
+                    case R.id.nav_all:
+                        getSupportFragmentManager().beginTransaction().replace(
+                                R.id.fragment_container, new CelebrityFragment()).commit();
 
-                ContentResolver contentResolver = getContentResolver();
-                contentResolver.insert(
-                        CelebrityProviderContract.CONTENT_URI, contentValues);
-                Cursor c = contentResolver.query(
-                        CelebrityProviderContract.CelebrityEntry.CELEBRITY_CONTENT_URI,
-                        Celebrity.keys,
-                        null,
-                        null,
-                        null);
-
-                if (c.moveToFirst()) {
-                    do {
-                        for (int i=0 ; i < Celebrity.keys.length ; i++) {
-                            String s = c.getString(i);
-                            Log.d(TAG, "onClick: s: " + s);
-                        }
-                    } while (c.moveToNext());
                 }
-                Log.d(TAG, "onClick: c.count=" + c.getCount());
 
+                drawer.closeDrawer(GravityCompat.START);
+                return false;
 
             }
         });
+
+    }
+
+    public void onClick(MenuItem item) {
+        Log.d(TAG, "onClick: ");
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.onNavDestinationSelected(item, navController)
+                || super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        Log.d(TAG, "onNavigationItemSelected: ");
+
+        return false;
     }
 }

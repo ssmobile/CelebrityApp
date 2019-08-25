@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+      <TextView
+          android:id="@+id/fname_lname"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:text="dummy"
+          app:layout_constraintHorizontal_weight="7"
+          android:textSize="30sp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toStartOf="@id/fav_button"
+
+          />
+
+      <ImageButton
+          android:id="@+id/fav_button"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          app:srcCompat="@drawable/ic_heart_empty"
+          android:background="@null"
+          app:layout_constraintHorizontal_weight="2"
+          app:layout_constraintTop_toTopOf="@id/fname_lname"
+          app:layout_constraintBottom_toBottomOf="@id/fname_lname"
+          app:layout_constraintStart_toEndOf="@id/fname_lname"
+          app:layout_constraintEnd_toEndOf="parent"
+          tools:ignore="VectorDrawableCompat" />
+
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
