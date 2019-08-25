@@ -36,6 +36,7 @@ public class CelebrityContentProvider extends ContentProvider {
 
         switch(uriMatcher.match(uri)) {
             case CELEBRITY:
+                Log.d(TAG, "query: CELEBRITY");
                 returnCursor = sqLiteDatabase.query(
                         CELEB_TABLE_NAME,
                         projection,
@@ -46,6 +47,7 @@ public class CelebrityContentProvider extends ContentProvider {
                         sortby);
                 break;
             case CELEBRITY_ID:
+                Log.d(TAG, "query: CELEBRITY_ID");
                 returnCursor = sqLiteDatabase.query(
                         CELEB_TABLE_NAME,
                         projection,

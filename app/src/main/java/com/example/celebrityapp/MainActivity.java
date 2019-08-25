@@ -2,6 +2,7 @@ package com.example.celebrityapp;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import com.example.celebrityapp.model.datasource.local.contentprovider.Celebrity
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private Toolbar toolbar;
     private FloatingActionButton fab;
+    public static final String TAG = "TAG_MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +95,23 @@ public class MainActivity extends AppCompatActivity {
                 ContentResolver contentResolver = getContentResolver();
                 contentResolver.insert(
                         CelebrityProviderContract.CONTENT_URI, contentValues);
+                Cursor c = contentResolver.query(
+                        CelebrityProviderContract.CelebrityEntry.CELEBRITY_CONTENT_URI,
+                        Celebrity.keys,
+                        null,
+                        null,
+                        null);
+
+                if (c.moveToFirst()) {
+                    do {
+                        for (int i=0 ; i < Celebrity.keys.length ; i++) {
+                            String s = c.getString(i);
+                            Log.d(TAG, "onClick: s: " + s);
+                        }
+                    } while (c.moveToNext());
+                }
+                Log.d(TAG, "onClick: c.count=" + c.getCount());
+
 
             }
         });
