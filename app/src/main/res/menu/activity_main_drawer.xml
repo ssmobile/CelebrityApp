@@ -23,13 +23,21 @@
         </item>
     </group>
 
+    <item android:title="@string/add_remove" >
+        <menu>
+            <item
+                android:id="@+id/nav_add"
+                android:icon="@drawable/ic_person_add_black_24dp"
+                android:title="@string/add" />
+        </menu>
+    </item>
+
     <item android:title="@string/item_communicate">
         <menu>
             <item
-                android:id="@+id/nav_filio"
+                android:id="@+id/nav_fileio"
                 android:icon="@drawable/ic_menu_camera"
                 android:title="@string/file_i_o" />
-
         </menu>
     </item>
 

@@ -31,17 +31,32 @@ public class CelebrityFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        Log.d(TAG, "onCreateView: ");
-
         View root = inflater.inflate(R.layout.fragment_view_celebrities, container, false);
         celebrityList = new ArrayList<>();
+        Bundle b = getArguments();
+        String title = b.getString("type");
+        Log.d(TAG, "onCreateView: title: " + title);
+        String selection = null;
+        String[] selectionArgs = null;
+
+        switch (title) {
+            case "All Celebrities":
+                selection = null;
+                selectionArgs = null;
+                break;
+            case "Favorites":
+                selection = "is_favorite = ?";
+                selectionArgs = new String[]{"0"};
+                break;
+        }
+
         ContentResolver resolver = getActivity().getContentResolver();
         Uri celebrityListURI = CelebrityProviderContract.CelebrityEntry.CELEBRITY_CONTENT_URI;
         Cursor c = resolver.query(
                 celebrityListURI,
                 Celebrity.keys,
-                null,
-                null,
+                selection,
+                selectionArgs,
                 null);
 
         if (c.moveToFirst()) {
@@ -68,9 +83,6 @@ public class CelebrityFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
-        Log.d(TAG, "onCreateView: ");
 
         return root;
     }
