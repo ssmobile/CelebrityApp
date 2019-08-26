@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
+import com.example.celebrityapp.model.Celebrity;
 import com.example.celebrityapp.model.datasource.local.database.CelebrityDatabaseHelper;
 
 import static com.example.celebrityapp.model.datasource.local.contentprovider.CelebrityProviderContract.*;
@@ -75,9 +76,9 @@ public class CelebrityContentProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
-        SQLiteDatabase sqLiteDatabase = celebrityDatabaseHelper.getWritableDatabase();
-        long id = sqLiteDatabase.insert(CELEB_TABLE_NAME, null, contentValues);
+        celebrityDatabaseHelper.insertCelebrityIntoDB(Celebrity.fromContentValues(contentValues));
         getContext().getContentResolver().notifyChange(uri, null);
+
 
         return uri;
     }

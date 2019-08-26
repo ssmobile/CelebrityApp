@@ -46,7 +46,7 @@ public class CelebrityFragment extends Fragment {
                 break;
             case "Favorites":
                 selection = "is_favorite = ?";
-                selectionArgs = new String[]{"0"};
+                selectionArgs = new String[]{"1"};
                 break;
         }
 
@@ -64,12 +64,13 @@ public class CelebrityFragment extends Fragment {
                 Celebrity celeb = new Celebrity();
                 Log.d(TAG, "fromCursor: fname: " + c.getString(0));
 
-                celeb.setFirstName(c.getString(0));
-                celeb.setLastName(c.getString(1));
-                celeb.setHeight(c.getString(2));
-                celeb.setIndustry(c.getString(3));
-                celeb.setDob(c.getString(4));
-                celeb.setFavorite(c.getInt(5)!=0);
+                celeb.setId(c.getLong(0));
+                celeb.setFirstName(c.getString(1));
+                celeb.setLastName(c.getString(2));
+                celeb.setHeight(c.getString(3));
+                celeb.setIndustry(c.getString(4));
+                celeb.setDob(c.getString(5));
+                celeb.setFavorite(c.getInt(6)!=0);
 
                 Log.d(TAG, "fromCursor: celeb: " + celeb.toString());
                 celebrityList.add(celeb);
