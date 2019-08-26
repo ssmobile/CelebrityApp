@@ -9,7 +9,6 @@
     <string name="menu_all">All Celebrities</string>
     <string name="menu_industries">Industries</string>
     <string name="menu_favorites">Favorites</string>
-    <string name="item_communicate">Communicate</string>
     <string name="celebrities">Celebrities</string>
     <string name="file_i_o">FILE I/O</string>
     <string name="title_activity_celebrity_list">CelebrityListActivity</string>
@@ -35,5 +34,6 @@
     <string name="industry_label">Industry:</string>
     <string name="industry_hint">Actor</string>
     <string name="add_celebrity">Add Celebrity</string>
+    <string name="files">Files</string>
 
 </resources>
