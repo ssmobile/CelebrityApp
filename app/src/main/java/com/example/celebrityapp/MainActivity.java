@@ -3,7 +3,7 @@ package com.example.celebrityapp;
 import android.os.Bundle;
 
 import com.example.celebrityapp.ui.add.AddFragment;
-import com.example.celebrityapp.ui.celebrity.CelebrityFragment;
+import com.example.celebrityapp.ui.celebrity.CelebritiesFragment;
 import com.example.celebrityapp.ui.fileio.FileIOFragment;
 import com.example.celebrityapp.ui.industry.IndustryFragment;
 import com.example.celebrityapp.ui.main.MainFragment;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         bindViews();
         configureViews();
-        frag = new CelebrityFragment();
+        frag = new CelebritiesFragment();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         frag = new IndustryFragment();
                         break;
                     default:
-                        frag = new CelebrityFragment();
+                        frag = new CelebritiesFragment();
                         Log.d(TAG, "onNavigationItemSelected: defualt");
                         Bundle args = new Bundle();
                         args.putString("type", menuItem.getTitle().toString());

@@ -20,16 +20,16 @@ import com.example.celebrityapp.model.datasource.local.contentprovider.Celebrity
 
 import java.util.ArrayList;
 
-public class CelebrityAdapter extends RecyclerView.Adapter<CelebrityAdapter.ViewHolder> {
+public class CelebritiesAdapter extends RecyclerView.Adapter<CelebritiesAdapter.ViewHolder> {
 
     private static final String TAG = "TAG_CelebrityAdapter";
     private ArrayList<Celebrity> celebrityList;
     private Context context;
 
-    public CelebrityAdapter(ArrayList<Celebrity> celebrityList) {
-        Log.d(TAG, "CelebrityAdapter: ");
+    public CelebritiesAdapter(ArrayList<Celebrity> celebrityList) {
+        Log.d(TAG, "CelebritiesAdapter: ");
         this.celebrityList = celebrityList;
-        Log.d(TAG, "CelebrityAdapter: list: " + this.celebrityList.toString());
+        Log.d(TAG, "CelebritiesAdapter: list: " + this.celebrityList.toString());
     }
 
     @NonNull

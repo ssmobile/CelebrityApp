@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.celebrityapp.CelebrityAdapter;
+import com.example.celebrityapp.CelebritiesAdapter;
 import com.example.celebrityapp.R;
 import com.example.celebrityapp.model.Celebrity;
 import com.example.celebrityapp.model.datasource.local.contentprovider.CelebrityProviderContract;
 
 import java.util.ArrayList;
 
-public class CelebrityFragment extends Fragment {
+public class CelebritiesFragment extends Fragment {
 
     public static final String TAG = "TAG_CelebFragment";
 
@@ -34,7 +34,16 @@ public class CelebrityFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_celebrities, container, false);
         celebrityList = new ArrayList<>();
         Bundle b = getArguments();
-        String title = b.getString("type");
+        String title = "";
+        String industry = "";
+
+        try {
+            title = b.getString("type");
+            industry = b.getString("industry");
+        } catch (NullPointerException e) {
+            Log.e(TAG, "onCreateView: ", e);
+        }
+
         Log.d(TAG, "onCreateView: title: " + title);
         String selection = null;
         String[] selectionArgs = null;
@@ -48,6 +57,10 @@ public class CelebrityFragment extends Fragment {
                 selection = "is_favorite = ?";
                 selectionArgs = new String[]{"1"};
                 break;
+            case "Industry":
+                Log.d(TAG, "onCreateView: INDUSTRY");
+                selection = "industry = ?";
+                selectionArgs = new String[]{industry};
         }
 
         ContentResolver resolver = getActivity().getContentResolver();
@@ -62,8 +75,6 @@ public class CelebrityFragment extends Fragment {
         if (c.moveToFirst()) {
             do {
                 Celebrity celeb = new Celebrity();
-                Log.d(TAG, "fromCursor: fname: " + c.getString(0));
-
                 celeb.setId(c.getLong(0));
                 celeb.setFirstName(c.getString(1));
                 celeb.setLastName(c.getString(2));
@@ -72,7 +83,6 @@ public class CelebrityFragment extends Fragment {
                 celeb.setDob(c.getString(5));
                 celeb.setFavorite(c.getInt(6)!=0);
 
-                Log.d(TAG, "fromCursor: celeb: " + celeb.toString());
                 celebrityList.add(celeb);
             } while (c.moveToNext());
 
@@ -80,7 +90,7 @@ public class CelebrityFragment extends Fragment {
         }
 
         RecyclerView recyclerView = root.findViewById(R.id.celebrity_list_recyclerview);
-        CelebrityAdapter adapter = new CelebrityAdapter(celebrityList);
+        CelebritiesAdapter adapter = new CelebritiesAdapter(celebrityList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

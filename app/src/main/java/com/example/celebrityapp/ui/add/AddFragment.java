@@ -18,11 +18,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.celebrityapp.R;
 import com.example.celebrityapp.model.Celebrity;
-import com.example.celebrityapp.model.datasource.local.contentprovider.CelebrityContentProvider;
 import com.example.celebrityapp.model.datasource.local.contentprovider.CelebrityProviderContract;
-import com.example.celebrityapp.ui.celebrity.CelebrityFragment;
-
-import java.util.ArrayList;
+import com.example.celebrityapp.ui.celebrity.CelebritiesFragment;
 
 
 public class AddFragment extends Fragment {
@@ -78,7 +75,7 @@ public class AddFragment extends Fragment {
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                     Bundle args = new Bundle();
                     args.putString("type", "All Celebrities");
-                    Fragment fragment = new CelebrityFragment();
+                    Fragment fragment = new CelebritiesFragment();
                     fragment.setArguments(args);
                     ft.replace(R.id.fragment_container, fragment).commit();
                 }
