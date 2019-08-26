@@ -22,4 +22,18 @@
     <string name="menu_send">Send</string>
     <string name="title_activity_view_celebrities">ViewCelebrities</string>
 
+    <string name="add_remove">Add/Remove</string>
+    <string name="add">Add</string>
+    <string name="first_name_label">First Name:</string>
+    <string name="first_name_hint">John</string>
+    <string name="last_name_label">Last Name:</string>
+    <string name="last_name_hint">Smith</string>
+    <string name="height">Height:</string>
+    <string name="height_hint">5\'9\'\'</string>
+    <string name="dob_label">Date of birth:</string>
+    <string name="dob_hint">01/01/1980</string>
+    <string name="industry_label">Industry:</string>
+    <string name="industry_hint">Actor</string>
+    <string name="add_celebrity">Add Celebrity</string>
+
 </resources>

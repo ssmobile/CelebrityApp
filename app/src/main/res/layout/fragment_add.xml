@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.add.AddFragment">
+
+    <TextView
+        android:id="@+id/first_nameTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:labelFor="@id/first_nameET"
+        android:text="@string/first_name_label"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/first_nameET"
+        app:layout_constraintEnd_toStartOf="@id/first_nameET"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/first_nameET" />
+
+    <EditText
+        android:id="@+id/first_nameET"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/first_name_hint"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/last_nameET"
+        app:layout_constraintStart_toEndOf="@id/first_nameTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/last_nameTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:labelFor="@id/last_nameET"
+        android:text="@string/last_name_label"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/last_nameET"
+        app:layout_constraintBottom_toBottomOf="@id/last_nameET"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/last_nameET" />
+
+    <EditText
+        android:id="@+id/last_nameET"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/last_name_hint"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/first_nameET"
+        app:layout_constraintBottom_toTopOf="@id/heightET"
+        app:layout_constraintStart_toEndOf="@id/last_nameTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText,LabelFor" />
+
+    <TextView
+        android:id="@+id/heightTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:labelFor="@id/heightET"
+        android:text="@string/height"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/heightET"
+        app:layout_constraintBottom_toBottomOf="@id/heightET"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/heightET" />
+
+    <EditText
+        android:id="@+id/heightET"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/height_hint"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/last_nameET"
+        app:layout_constraintBottom_toTopOf="@id/dobET"
+        app:layout_constraintStart_toEndOf="@id/heightTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="LabelFor" />
+
+
+    <TextView
+        android:id="@+id/dobTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:labelFor="@id/dobET"
+        android:text="@string/dob_label"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/dobET"
+        app:layout_constraintBottom_toBottomOf="@id/dobET"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/dobET" />
+
+    <EditText
+        android:id="@+id/dobET"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/dob_hint"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/heightET"
+        app:layout_constraintBottom_toTopOf="@id/industryET"
+        app:layout_constraintStart_toEndOf="@id/dobTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/industryTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:labelFor="@id/industryET"
+        android:text="@string/industry_label"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/industryET"
+        app:layout_constraintBottom_toBottomOf="@id/industryET"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/industryET" />
+
+    <EditText
+        android:id="@+id/industryET"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/industry_hint"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/dobET"
+        app:layout_constraintBottom_toTopOf="@id/add_celeb_button"
+        app:layout_constraintStart_toEndOf="@id/industryTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="LabelFor" />
+
+    <Button
+        android:id="@+id/add_celeb_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:text="@string/add_celebrity"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/industryET" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
