@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.add.AddFragment">
+    tools:context=".ui.add.CelebrityFragment">
 
     <TextView
-        android:id="@+id/first_nameTV"
+        android:id="@+id/first_name_hint_TV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
@@ -15,10 +15,24 @@
         android:text="@string/first_name_label"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/first_nameET"
-        app:layout_constraintEnd_toStartOf="@id/first_nameET"
+        app:layout_constraintBottom_toTopOf="@id/last_name_hint_TV"
+        app:layout_constraintEnd_toStartOf="@id/first_nameTV"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/first_nameET" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/first_nameTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/last_nameET"
+        app:layout_constraintStart_toEndOf="@id/first_name_hint_TV"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/first_nameET"
@@ -30,12 +44,12 @@
         android:inputType="text"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/last_nameET"
-        app:layout_constraintStart_toEndOf="@id/first_nameTV"
+        app:layout_constraintStart_toEndOf="@id/first_name_hint_TV"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="LabelFor" />
 
     <TextView
-        android:id="@+id/last_nameTV"
+        android:id="@+id/last_name_hint_TV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:labelFor="@id/last_nameET"
@@ -43,10 +57,25 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="@id/last_nameET"
-        app:layout_constraintBottom_toBottomOf="@id/last_nameET"
+        app:layout_constraintTop_toBottomOf="@id/first_name_hint_TV"
+        app:layout_constraintBottom_toTopOf="@id/height_hint_TV"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/last_nameET" />
+
+
+    <TextView
+        android:id="@+id/last_nameTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        android:hint="@string/last_name_hint"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/first_nameET"
+        app:layout_constraintBottom_toTopOf="@id/heightET"
+        app:layout_constraintStart_toEndOf="@id/last_name_hint_TV"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/last_nameET"
@@ -55,15 +84,16 @@
         android:hint="@string/last_name_hint"
         android:textSize="30sp"
         android:textAlignment="center"
+        android:gravity="center"
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/first_nameET"
         app:layout_constraintBottom_toTopOf="@id/heightET"
-        app:layout_constraintStart_toEndOf="@id/last_nameTV"
+        app:layout_constraintStart_toEndOf="@id/last_name_hint_TV"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="HardcodedText,LabelFor" />
 
     <TextView
-        android:id="@+id/heightTV"
+        android:id="@+id/height_hint_TV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:labelFor="@id/heightET"
@@ -76,6 +106,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/heightET" />
 
+
+    <TextView
+        android:id="@+id/heightTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/height_hint"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/last_nameET"
+        app:layout_constraintBottom_toTopOf="@id/dobET"
+        app:layout_constraintStart_toEndOf="@id/height_hint_TV"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="LabelFor" />
+
     <EditText
         android:id="@+id/heightET"
         android:layout_width="0dp"
@@ -83,16 +128,15 @@
         android:hint="@string/height_hint"
         android:textSize="30sp"
         android:textAlignment="center"
-        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/last_nameET"
         app:layout_constraintBottom_toTopOf="@id/dobET"
-        app:layout_constraintStart_toEndOf="@id/heightTV"
+        app:layout_constraintStart_toEndOf="@id/height_hint_TV"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="LabelFor" />
 
 
     <TextView
-        android:id="@+id/dobTV"
+        android:id="@+id/dob_hint_TV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:labelFor="@id/dobET"
@@ -105,6 +149,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/dobET" />
 
+    <TextView
+        android:id="@+id/dobTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="30sp"
+        android:visibility="invisible"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/heightET"
+        app:layout_constraintBottom_toTopOf="@id/industryET"
+        app:layout_constraintStart_toEndOf="@id/dob_hint_TV"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="LabelFor" />
+
     <EditText
         android:id="@+id/dobET"
         android:layout_width="0dp"
@@ -114,12 +172,12 @@
         android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@id/heightET"
         app:layout_constraintBottom_toTopOf="@id/industryET"
-        app:layout_constraintStart_toEndOf="@id/dobTV"
+        app:layout_constraintStart_toEndOf="@id/dob_hint_TV"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="LabelFor" />
 
     <TextView
-        android:id="@+id/industryTV"
+        android:id="@+id/industry_hint_TV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:labelFor="@id/industryET"
@@ -132,6 +190,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/industryET" />
 
+
+    <TextView
+        android:id="@+id/industryTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/industry_hint"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/dobET"
+        app:layout_constraintBottom_toTopOf="@id/add_celeb_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/industry_hint_TV"
+        tools:ignore="LabelFor" />
+
     <EditText
         android:id="@+id/industryET"
         android:layout_width="0dp"
@@ -142,8 +216,8 @@
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/dobET"
         app:layout_constraintBottom_toTopOf="@id/add_celeb_button"
-        app:layout_constraintStart_toEndOf="@id/industryTV"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/industry_hint_TV"
         tools:ignore="LabelFor" />
 
     <Button
@@ -157,5 +231,30 @@
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/industryET" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/edit_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit_black_24dp"
+        android:visibility="gone"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/del_fab"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="36dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/del_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_black_24dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="36dp" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

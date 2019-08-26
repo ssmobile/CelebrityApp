@@ -65,6 +65,8 @@ public class CelebritiesFragment extends Fragment {
 
         ContentResolver resolver = getActivity().getContentResolver();
         Uri celebrityListURI = CelebrityProviderContract.CelebrityEntry.CELEBRITY_CONTENT_URI;
+
+
         Cursor c = resolver.query(
                 celebrityListURI,
                 Celebrity.keys,
@@ -74,6 +76,7 @@ public class CelebritiesFragment extends Fragment {
 
         if (c.moveToFirst()) {
             do {
+
                 Celebrity celeb = new Celebrity();
                 celeb.setId(c.getLong(0));
                 celeb.setFirstName(c.getString(1));

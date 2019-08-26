@@ -2,9 +2,11 @@ package com.example.celebrityapp.model;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
-public class Celebrity {
+public class Celebrity implements Parcelable {
 
     public static final String TAG = "Celebrity.class";
 
@@ -30,6 +32,28 @@ public class Celebrity {
         this.dob = dob;
         this.isFavorite = isFavorite;
     }
+
+    protected Celebrity(Parcel in) {
+        id = in.readLong();
+        firstName = in.readString();
+        lastName = in.readString();
+        height = in.readString();
+        industry = in.readString();
+        dob = in.readString();
+        isFavorite = in.readByte() != 0;
+    }
+
+    public static final Creator<Celebrity> CREATOR = new Creator<Celebrity>() {
+        @Override
+        public Celebrity createFromParcel(Parcel in) {
+            return new Celebrity(in);
+        }
+
+        @Override
+        public Celebrity[] newArray(int size) {
+            return new Celebrity[size];
+        }
+    };
 
     public long getId() { return id; }
 
@@ -99,4 +123,19 @@ public class Celebrity {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(id);
+        parcel.writeString(firstName);
+        parcel.writeString(lastName);
+        parcel.writeString(height);
+        parcel.writeString(industry);
+        parcel.writeString(dob);
+        parcel.writeByte((byte) (isFavorite ? 1 : 0));
+    }
 }

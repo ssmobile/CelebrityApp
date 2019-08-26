@@ -2,7 +2,7 @@ package com.example.celebrityapp;
 
 import android.os.Bundle;
 
-import com.example.celebrityapp.ui.add.AddFragment;
+import com.example.celebrityapp.ui.add.CelebrityFragment;
 import com.example.celebrityapp.ui.celebrity.CelebritiesFragment;
 import com.example.celebrityapp.ui.fileio.FileIOFragment;
 import com.example.celebrityapp.ui.industry.IndustryFragment;
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         break;
                     case R.id.nav_add:
                         Log.d(TAG, "onNavigationItemSelected: navadd");
-                        frag = new AddFragment();
+                        frag = new CelebrityFragment();
                         break;
                     case R.id.nav_industries:
                         frag = new IndustryFragment();

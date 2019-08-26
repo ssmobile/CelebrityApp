@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.celebrityapp.model.Celebrity;
 import com.example.celebrityapp.model.datasource.local.contentprovider.CelebrityProviderContract;
+import com.example.celebrityapp.ui.add.CelebrityFragment;
 
 import java.util.ArrayList;
 
@@ -96,6 +101,21 @@ public class CelebritiesAdapter extends RecyclerView.Adapter<CelebritiesAdapter.
                 alertDialog.show();
 
                 return false;
+            }
+        });
+
+
+        holder.celebrityNameView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: " + celebrity.getFirstName());
+                FragmentTransaction ft = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction();
+                Fragment frag = new CelebrityFragment();
+                Bundle args = new Bundle();
+                args.putString("type", "edit");
+                args.putParcelable("celebrity",celebrity);
+                frag.setArguments(args);
+                ft.replace(R.id.fragment_container, frag).commit();
             }
         });
     }

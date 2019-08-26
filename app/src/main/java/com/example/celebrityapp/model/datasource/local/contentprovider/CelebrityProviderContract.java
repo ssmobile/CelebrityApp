@@ -6,12 +6,8 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class CelebrityProviderContract {
-    //Uri Information
-//    public static final String CONTENT_AUTHORITY =
-//            "com.example.celebrityapp.model.datasource.local.contentprovider.CelebrityContentProvider";
-//    public static final Uri CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-    public static final String PATH_CELEBRITY = "celebrity";
-//
+
+   public static final String PATH_CELEBRITY = "celebrity";
 
    public static final int CELEBRITY = 100;
    public static final int CELEBRITY_ID = 101;
