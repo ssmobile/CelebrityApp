@@ -60,7 +60,7 @@ public class CelebrityFragment extends Fragment {
         } catch (Exception e) {
             Log.e(TAG, "onCreateView: ", e);
         }
-        configureViews(root);
+        configureViews();
 
 
 
@@ -189,7 +189,7 @@ public class CelebrityFragment extends Fragment {
 
     }
 
-    private void configureViews(View root) {
+    private void configureViews() {
 
         if (celebrity!=null) {
             firstNameTV.setText(celebrity.getFirstName());
@@ -216,6 +216,9 @@ public class CelebrityFragment extends Fragment {
             industryET.setVisibility(View.INVISIBLE);
             dobET.setVisibility(View.INVISIBLE);
             addButton.setVisibility(View.INVISIBLE);
+
+            delFab.show();
+            editFab.show();
         }
 
     }
