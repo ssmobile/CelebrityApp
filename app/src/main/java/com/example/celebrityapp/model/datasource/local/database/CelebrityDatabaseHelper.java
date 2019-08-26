@@ -22,11 +22,7 @@ public class CelebrityDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CelebrityDatabaseContract.CREATE_CELEB_TABLE_QUERY);
-        sqLiteDatabase.execSQL(CelebrityDatabaseContract.CREATE_FILM_TABLE_QUERY);
-        sqLiteDatabase.execSQL(CelebrityDatabaseContract.CREATE_FILMOGRAPHY_TABLE_QUERY);
         Log.d(TAG, CelebrityDatabaseContract.CREATE_CELEB_TABLE_QUERY);
-        Log.d(TAG, CelebrityDatabaseContract.CREATE_FILM_TABLE_QUERY);
-        Log.d(TAG, CelebrityDatabaseContract.CREATE_FILMOGRAPHY_TABLE_QUERY);
     }
 
     @Override

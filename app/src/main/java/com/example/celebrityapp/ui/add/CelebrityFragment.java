@@ -89,11 +89,11 @@ public class CelebrityFragment extends Fragment {
                     String industry = industryET.getText().toString();
                     String height = heightET.getText().toString();
                     boolean isFavorite = false;
-                    if (!args.isEmpty()) {isFavorite = celebrity.isFavorite();}
+                    if (args != null) {isFavorite = celebrity.isFavorite();}
                     Celebrity c = new Celebrity(firstName, lastName, height, industry, dob, isFavorite);
                     ContentResolver resolver = getActivity().getContentResolver();
                     ContentValues values = c.getContentValues();
-                    if (args.isEmpty()) {
+                    if (args == null) {
                         Uri insertUri = CelebrityProviderContract.CONTENT_URI;
                         resolver.insert(insertUri, values);
                     } else {
