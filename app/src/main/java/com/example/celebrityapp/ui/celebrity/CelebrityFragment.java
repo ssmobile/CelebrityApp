@@ -31,7 +31,7 @@ public class CelebrityFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_view_celebrities, container, false);
+        View root = inflater.inflate(R.layout.fragment_celebrities, container, false);
         celebrityList = new ArrayList<>();
         Bundle b = getArguments();
         String title = b.getString("type");

@@ -83,10 +83,7 @@ public class Celebrity {
 
         return c;
     }
-//
-//    public static Celebrity fromCursor(Cursor c) {
-//
-//    }
+
 
     @Override
     public String toString() {

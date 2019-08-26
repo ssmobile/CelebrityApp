@@ -23,9 +23,8 @@ import java.util.ArrayList;
 public class CelebrityAdapter extends RecyclerView.Adapter<CelebrityAdapter.ViewHolder> {
 
     private static final String TAG = "TAG_CelebrityAdapter";
-
-    ArrayList<Celebrity> celebrityList;
-    Context context;
+    private ArrayList<Celebrity> celebrityList;
+    private Context context;
 
     public CelebrityAdapter(ArrayList<Celebrity> celebrityList) {
         Log.d(TAG, "CelebrityAdapter: ");
