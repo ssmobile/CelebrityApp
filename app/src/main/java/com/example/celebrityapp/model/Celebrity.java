@@ -16,7 +16,7 @@ public class Celebrity {
     private String dob;
     private boolean isFavorite;
 
-    public static final String[] keys = {"first_name", "last_name", "height", "industry",
+    public static final String[] keys = {"id","first_name", "last_name", "height", "industry",
     "dob", "is_favorite"};
 
     public Celebrity() {}
@@ -61,12 +61,12 @@ public class Celebrity {
 
     public ContentValues getContentValues() {
         ContentValues values = new ContentValues();
-        values.put(keys[0], this.firstName);
-        values.put(keys[1], this.lastName);
-        values.put(keys[2], this.height);
-        values.put(keys[3], this.industry);
-        values.put(keys[4], this.dob);
-        values.put(keys[5], this.isFavorite);
+        values.put(keys[1], this.firstName);
+        values.put(keys[2], this.lastName);
+        values.put(keys[3], this.height);
+        values.put(keys[4], this.industry);
+        values.put(keys[5], this.dob);
+        values.put(keys[6], this.isFavorite);
 
         return values;
     }
@@ -74,12 +74,12 @@ public class Celebrity {
     public static Celebrity fromContentValues(ContentValues values) {
         Celebrity c = new Celebrity();
 
-        c.firstName = values.getAsString(keys[0]);
-        c.lastName = values.getAsString(keys[1]);
-        c.height = values.getAsString(keys[2]);
-        c.industry = values.getAsString(keys[3]);
-        c.dob = values.getAsString(keys[4]);
-        c.isFavorite = values.getAsBoolean(keys[5]);
+        c.firstName = values.getAsString(keys[1]);
+        c.lastName = values.getAsString(keys[2]);
+        c.height = values.getAsString(keys[3]);
+        c.industry = values.getAsString(keys[4]);
+        c.dob = values.getAsString(keys[5]);
+        c.isFavorite = values.getAsBoolean(keys[6]);
 
         return c;
     }
